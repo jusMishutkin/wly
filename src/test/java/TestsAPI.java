@@ -31,12 +31,14 @@ public class TestsAPI {
 
     @Test
     public void checkDelay() {
-        assertEquals(RestAssured.given().baseUri(UrlConstants.DELAY_TEST_URL + 4).post().getTimeIn(TimeUnit.SECONDS), 4);
+        String DELAY = "delay/";
+        assertEquals(RestAssured.given().baseUri(UrlConstants.DELAY_TEST_URL).post(DELAY+4).getTimeIn(TimeUnit.SECONDS), 4);
     }
 
     @Test
     public void chectContentType() {
         String CONTENT_TYPE = "image/png";
         RestAssured.given().baseUri(UrlConstants.DELAY_TEST_URL).get(CONTENT_TYPE).then().contentType(CONTENT_TYPE).statusCode(200);
+
     }
 }
